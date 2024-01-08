@@ -10,11 +10,15 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
+
 }
 
 body {
   font-family: sans-serif;
   background-color: #f9fbfd;
+  background-image: url('./assets/sky07.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .wrapper {
@@ -27,15 +31,18 @@ header {
   text-align: center;
   padding: 20px;
   padding-top: 0px;
-  color: hsl(206, 17%, 28%);
+  /*color: hsl(206, 17%, 28%);*/
+  color: white;
 }
 
 .card {
-  background-color: hsl(0, 0%, 100%);
+  /*background-color: hsl(0, 0%, 100%);*/
+  background-color: transparent;
   border-radius: 5px;
   border-width: 1px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
-  color: hsl(206, 17%, 28%);
+  /*color: hsl(206, 17%, 28%);*/
+  color: white;
   font-size: 18px;
   margin: 0 auto;
   max-width: 800px;
@@ -112,10 +119,12 @@ button[disabled] {
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
-  border: 2px dashed #c0c7cf;
+  /*border: 2px dashed #c0c7cf;*/
   border-radius: 6px;
   resize: none;
   overflow: hidden;
+  background-color: transparent;
+  color: white;
 }
 
 @media (max-width: 690px) {
