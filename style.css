@@ -16,9 +16,10 @@ body,
 body {
   font-family: sans-serif;
   background-color: #f9fbfd;
-  background-image: url('./assets/sky07.png');
+  background-image: url('./assets/sky07-contrast.png');
   background-repeat: no-repeat;
   background-size: cover;
+  /* background-position: center; */
 }
 
 .wrapper {
@@ -31,18 +32,18 @@ header {
   text-align: center;
   padding: 20px;
   padding-top: 0px;
-  /*color: hsl(206, 17%, 28%);*/
+  /* color: hsl(206, 17%, 28%); */
   color: white;
 }
 
 .card {
   /*background-color: hsl(0, 0%, 100%);*/
   background-color: transparent;
-  /* backdrop-filter: blur(50px); */
+  /* backdrop-filter: blur(10px); */
   border-radius: 5px;
   border-width: 1px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
-  /*color: hsl(206, 17%, 28%);*/
+  /* color: hsl(206, 17%, 28%); */
   color: white;
   font-size: 18px;
   margin: 0 auto;
@@ -54,11 +55,45 @@ header {
   display: none;
 }
 
-#number-alert, #character-alert {
-  color: red;
-  display: none;
+#form-number-label, #form-checkbox-label{
+  margin-bottom: 5px;
+}
+#form-number {
+  width: 50%;
+  height: 40px;
+  border: none;
+  outline: none;
+  border-radius: 50px;
+  background-color: rgba(255,255,255, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  font-size: 16px;
 }
 
+#form-checkbox-label {
+  margin-top: 15px;
+}
+
+.small-text {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.tickboxes {
+  accent-color: hsl(360, 91%, 36%);;
+  margin: 5px;
+}
+
+#number-alert, #character-alert {
+  color: red;
+  backdrop-filter: blur(20px);
+  padding: 5px;
+  display: none;
+  font-size: 12px;
+  border-radius: 50px;
+  background-color: rgba(255,255,255, 0.7);
+  
+}
 
 .card-header::after {
   content: " ";
@@ -80,8 +115,9 @@ header {
   content: " ";
   display: block;
   width: 100%;
-  background: #e7e9eb;
+  background: rgba(255,255,255, 0.3);
   height: 2px;
+  margin-top: 5px;
 }
 
 .card-footer::after {
@@ -120,13 +156,14 @@ button[disabled] {
   -moz-appearance: none;
   appearance: none;
   border: none;
+  outline-color: white;
   display: block;
   width: 100%;
   padding-top: 15px;
   padding-left: 15px;
   padding-right: 15px;
   padding-bottom: 85px;
-  font-size: 1.2rem;
+  font-size: 2rem;
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;

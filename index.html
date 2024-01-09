@@ -26,16 +26,18 @@
         </div>
         <div id="card-form">
           <form>
-            <label for="form-number">Choose a length for your password. Enter a number between 8 and 128.</label>
-            <input type="text" id="form-number">
-            <div id="number-alert-div"><span id="number-alert">You have not entered a number between 8 and 128. Please make sure you enter a number only.</span></div>
-            <br/>
-            <div>Choose the character types for your password. Make sure at least one character type is selected.</div>
-            <input type ="checkbox" id="value1"><label for="value1">Include lowercase characters</label><br/>
-            <input type ="checkbox" id="value2"><label for="value2">Include uppercase characters</label><br/>
-            <input type ="checkbox" id="value3"><label for="value3">Include numeric characters</label><br/>
-            <input type ="checkbox" id="value4"><label for="value4">Include special characters</label><br/>
-            <div id="character-alert-div"><span id="character-alert">You have not selected a character type.</span></div>
+            <div id="form-number-label">Enter a password length</div>
+            <div class="small-text">A number between 8 and 128</div>
+  
+            <input type="text" id="form-number" placeholder="e.g. 12">
+            <div id="number-alert-div"><span id="number-alert">Enter a number between 8 and 128.</span></div>
+            <div id="form-checkbox-label">Select the character types </div>
+            <div class="small-text">Tick one or more</div>
+            <input type ="checkbox" id="value1" class="tickboxes"><label for="value1" class="tickbox-text"> lowercase characters</label><br/>
+            <input type ="checkbox" id="value2" class="tickboxes"><label for="value2" class="tickbox-text"> uppercase characters</label><br/>
+            <input type ="checkbox" id="value3" class="tickboxes"><label for="value3" class="tickbox-text"> numeric characters</label><br/>
+            <input type ="checkbox" id="value4" class="tickboxes"><label for="value4" class="tickbox-text"> special characters</label><br/>
+            <div id="character-alert-div"><span id="character-alert">Select at least one character type.</span></div>
           </form>
         </div>
         <div class="card-footer">
