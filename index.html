@@ -13,16 +13,30 @@
         <h1>Password Generator</h1>
       </header>
       <div class="card">
-        <div class="card-header">
+        <div class="card-header card-hidden">
           <h2>Generate a Password</h2>
         </div>
-        <div class="card-body">
+        <div class="card-body card-hidden">
           <textarea
             readonly
             id="password"
             placeholder="Your Secure Password"
             aria-label="Generated Password"
           ></textarea>
+        </div>
+        <div id="card-form">
+          <form>
+            <label for="form-number">Choose a length for your password. Enter a number between 8 and 128.</label>
+            <input type="text" id="form-number">
+            <div id="number-alert-div"><span id="number-alert">You have not entered a number between 8 and 128. Please make sure you enter a number only.</span></div>
+            <br/>
+            <div>Choose the character types for your password. Make sure at least one character type is selected.</div>
+            <input type ="checkbox" id="value1"><label for="value1">Include lowercase characters</label><br/>
+            <input type ="checkbox" id="value2"><label for="value2">Include uppercase characters</label><br/>
+            <input type ="checkbox" id="value3"><label for="value3">Include numeric characters</label><br/>
+            <input type ="checkbox" id="value4"><label for="value4">Include special characters</label><br/>
+            <div id="character-alert-div"><span id="character-alert">You have not selected a character type.</span></div>
+          </form>
         </div>
         <div class="card-footer">
           <button id="generate" class="btn">Generate Password</button>

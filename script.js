@@ -97,7 +97,17 @@ let user = {
               special: false,
 }
 
-let pass = false;
+let userLength = 0;
+let userLow = false;
+let userUpp = false;
+let userNum = false;
+let userSpec = false;
+const form = document.getElementById('card-form');
+const card = document.querySelector('.card-body');
+const numberAlert = document.getElementById('number-alert');
+const characterAlert = document.getElementById('character-alert');
+
+let pass = true;
 let characterArray = [
                       lowerCasedCharacters,
                       upperCasedCharacters,
@@ -106,43 +116,59 @@ let characterArray = [
                     ];
 let selectedCharacterTypes = [];
 let randomPassword="";
+let guaranteedCharacters = [];
 
 function initialise (){
   randomPassword = "";
   selectedCharacterTypes = [];
+  guaranteedCharacters = [];
+  card.style.display = 'none';
+  form.style.display = 'block';
+  pass = true;
+  console.log('initialised.' + randomPassword);
 };
 
 // Function to prompt user for password options
 function getPasswordOptions(object) {
    // * Present a series of prompts for password criteria
   //   * Length of password
-    object.length = parseInt(prompt('Choose a length for your password. Enter a number between 8 and 128.'));
-    console.log(object.length);
+userLength = parseInt(document.getElementById('form-number').value);
+
+
+    console.log(userLength);
+    console.log(userLow);
+    console.log(userUpp);
+    console.log(userNum);
+    console.log(userSpec);
   //     * At least 8 characters but no more than 128.
-    switch (object.length >= 8 && object.length <= 128){
+    switch (userLength >= 8 && userLength <= 128){
       case true:
+        numberAlert.style.display = 'none';
+        object.length = userLength;
+        console.log(`Length: ${object.length}`);
         characterTypes(user);
         break;
       default:
-       
-      //Confirm and cancel if false;
-        alert('You have not entered a number between 8 and 128. Please make sure you enter a number only.');
-        getPasswordOptions(user);
+        numberAlert.style.display = 'block';
       break;
     };
 };
 
 function characterTypes(object){
   //   * Character types
-  alert('Choose the character types for your password. Make sure at least one character type is selected.');
   //     * Lowercase
-    object.lowercase = confirm(`Include ${Object.keys(object)[1]} characters`);
+    object.lowercase = document.getElementById('value1').checked;
   //     * Uppercase
-    object.uppercase = confirm(`Include ${Object.keys(object)[2]} characters`);
+    object.uppercase = document.getElementById('value2').checked;
   //     * Numeric
-    object.numeric = confirm(`Include ${Object.keys(object)[3]} characters`);
+    object.numeric = document.getElementById('value3').checked;
   //     * Special characters ($@%&*, etc)
-    object.special = confirm(`Include ${Object.keys(object)[4]} characters`);
+    object.special = document.getElementById('value4').checked;
+
+    console.log(`Lowercase: ${object.lowercase}`);
+    console.log(`Uppercase: ${object.uppercase}`);
+    console.log(`Numeric: ${object.numeric}`);
+    console.log(`Special: ${object.special}`);
   
    // * Code should validate for each input and at least one character type should be selected
   let passArray = Object.values(user);
@@ -150,21 +176,27 @@ function characterTypes(object){
 
   switch (passArray.includes(true)){
     case true:
-        pass = true;
+        characterAlert.style.display = 'none';
         console.log(`selected: ${selectedCharacterTypes}`);
         console.log(`passArray: ${passArray}`);
       
         for (let i=0; i < passArray.length; i++) {
           if (passArray[i]){
               selectedCharacterTypes = selectedCharacterTypes.concat(characterArray[i]);
+              let currentArray = characterArray[i];
+              let num = Math.floor(Math.random()*currentArray.length);
+              let includeCharacter = currentArray[num];
+              guaranteedCharacters.push(includeCharacter);
+              console.log(`Guaranteed characters: ${guaranteedCharacters}`);
           };
         };
         console.log(`selected: ${selectedCharacterTypes}`);
         getRandom(selectedCharacterTypes);
+        form.style.display = 'none';
+        card.style.display = 'block';    
         break;
-    default: 
-        alert('You have not chosen a character type. Try again.');
-        characterTypes(user);
+    default:
+        characterAlert.style.display = 'block';
         break;
   };
 };
@@ -179,17 +211,19 @@ for (let i=0; i<user.length; i++){
 
   randomPassword += arr[ranNum];
 };
-
-console.log('You called?');
 console.log(randomPassword);
+pass = false;
 }
 
 // Function to generate password with user input
 function generatePassword() {
  // * Generate a password when the button is clicked
+ if (pass){
+  getPasswordOptions(user);
+  return randomPassword;
+ } else {
  initialise();
- getPasswordOptions(user);
- return randomPassword;
+ }
  
 }
 

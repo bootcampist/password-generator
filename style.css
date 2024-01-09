@@ -38,6 +38,7 @@ header {
 .card {
   /*background-color: hsl(0, 0%, 100%);*/
   background-color: transparent;
+  /* backdrop-filter: blur(50px); */
   border-radius: 5px;
   border-width: 1px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
@@ -48,6 +49,16 @@ header {
   max-width: 800px;
   padding: 30px 40px;
 }
+
+.card-header, .card-body{
+  display: none;
+}
+
+#number-alert, #character-alert {
+  color: red;
+  display: none;
+}
+
 
 .card-header::after {
   content: " ";
