@@ -98,34 +98,40 @@ let user = {
 }
 
 let userLength = 0;
-let userLow = false;
-let userUpp = false;
-let userNum = false;
-let userSpec = false;
 const form = document.getElementById('card-form');
 const card = document.querySelector('.card-body');
 const numberAlert = document.getElementById('number-alert');
 const characterAlert = document.getElementById('character-alert');
 
 let pass = true;
-let characterArray = [
+const characterArray = [
                       lowerCasedCharacters,
                       upperCasedCharacters,
                       numericCharacters, 
                       specialCharacters
                     ];
+let passArray;
 let selectedCharacterTypes = [];
 let randomPassword="";
-let guaranteedCharacters = [];
+let lowercaseTest = /[a-z]+/;
+let uppercaseTest = /[A-Z]+/;
+let numberTest = /[0-9]+/;
+let specialTest = /\W/;
+const testArray = [
+                    lowercaseTest, 
+                    uppercaseTest, 
+                    numberTest, 
+                    specialTest
+                  ];
+let boolArray = [];
 
 function initialise (){
   randomPassword = "";
   selectedCharacterTypes = [];
-  guaranteedCharacters = [];
+  boolArray = [];
   card.style.display = 'none';
   form.style.display = 'block';
   pass = true;
-  console.log('initialised.' + randomPassword);
 };
 
 // Function to prompt user for password options
@@ -134,22 +140,15 @@ function getPasswordOptions(object) {
   //   * Length of password
 userLength = parseInt(document.getElementById('form-number').value);
 
-
-    console.log(userLength);
-    console.log(userLow);
-    console.log(userUpp);
-    console.log(userNum);
-    console.log(userSpec);
   //     * At least 8 characters but no more than 128.
     switch (userLength >= 8 && userLength <= 128){
       case true:
         numberAlert.style.display = 'none';
         object.length = userLength;
-        console.log(`Length: ${object.length}`);
         characterTypes(user);
         break;
       default:
-        numberAlert.style.display = 'block';
+        numberAlert.style.display = 'inline';
       break;
     };
 };
@@ -164,54 +163,55 @@ function characterTypes(object){
     object.numeric = document.getElementById('value3').checked;
   //     * Special characters ($@%&*, etc)
     object.special = document.getElementById('value4').checked;
-
-    console.log(`Lowercase: ${object.lowercase}`);
-    console.log(`Uppercase: ${object.uppercase}`);
-    console.log(`Numeric: ${object.numeric}`);
-    console.log(`Special: ${object.special}`);
   
    // * Code should validate for each input and at least one character type should be selected
-  let passArray = Object.values(user);
+  passArray = Object.values(user);
   passArray = passArray.slice(1);
 
   switch (passArray.includes(true)){
     case true:
         characterAlert.style.display = 'none';
-        console.log(`selected: ${selectedCharacterTypes}`);
-        console.log(`passArray: ${passArray}`);
       
         for (let i=0; i < passArray.length; i++) {
           if (passArray[i]){
               selectedCharacterTypes = selectedCharacterTypes.concat(characterArray[i]);
-              let currentArray = characterArray[i];
-              let num = Math.floor(Math.random()*currentArray.length);
-              let includeCharacter = currentArray[num];
-              guaranteedCharacters.push(includeCharacter);
-              console.log(`Guaranteed characters: ${guaranteedCharacters}`);
           };
         };
-        console.log(`selected: ${selectedCharacterTypes}`);
         getRandom(selectedCharacterTypes);
         form.style.display = 'none';
         card.style.display = 'block';    
         break;
     default:
-        characterAlert.style.display = 'block';
+        characterAlert.style.display = 'inline';
         break;
   };
 };
 
 // Function for getting a random element from an array
 function getRandom(arr) {
-// * Once prompts are answered then the password should be generated and displayed in an alert or written to the page
 
-console.log(arr);
+  // * Once prompts are answered then the password should be generated and displayed in an alert or written to the page
 for (let i=0; i<user.length; i++){
   let ranNum = Math.floor(Math.random()*arr.length);
-
   randomPassword += arr[ranNum];
 };
-console.log(randomPassword);
+
+//Check password contains all character types from user criteria
+for (i=0; i<passArray.length; i++) {
+  if(passArray[i] && testArray[i].test(randomPassword)) {
+    boolArray.push(true);
+  } else if (passArray[i] === false && testArray[i].test(randomPassword) === false) {
+    boolArray.push(true);
+  } else {
+    boolArray.push(false);
+  }
+};
+
+if (boolArray.includes(false)) {
+  boolArray = [];
+  randomPassword = "";
+  getRandom(selectedCharacterTypes);
+} 
 pass = false;
 }
 
@@ -224,7 +224,6 @@ function generatePassword() {
  } else {
  initialise();
  }
- 
 }
 
 // Get references to the #generate element
