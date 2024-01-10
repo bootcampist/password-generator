@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Password Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="wrapper">
       <header>
-        <h1>Password Generator</h1>
+        <h1><span id="thin">Password</span> <span id="bold">Generator</span></h1>
       </header>
       <div class="card">
         <div class="card-header card-hidden">
@@ -33,10 +37,10 @@
             <div id="number-alert-div"><span id="number-alert">Enter a number between 8 and 128.</span></div>
             <div id="form-checkbox-label">Select the character types </div>
             <div class="small-text">Tick one or more</div>
-            <input type ="checkbox" id="value1" class="tickboxes"><label for="value1" class="tickbox-text"> lowercase characters</label><br/>
-            <input type ="checkbox" id="value2" class="tickboxes"><label for="value2" class="tickbox-text"> uppercase characters</label><br/>
-            <input type ="checkbox" id="value3" class="tickboxes"><label for="value3" class="tickbox-text"> numeric characters</label><br/>
-            <input type ="checkbox" id="value4" class="tickboxes"><label for="value4" class="tickbox-text"> special characters</label><br/>
+            <input type ="checkbox" id="value1" class="tickboxes"><label for="value1" class="tickbox-text"> Lowercase characters</label><br/>
+            <input type ="checkbox" id="value2" class="tickboxes"><label for="value2" class="tickbox-text"> Uppercase characters</label><br/>
+            <input type ="checkbox" id="value3" class="tickboxes"><label for="value3" class="tickbox-text"> Numeric characters</label><br/>
+            <input type ="checkbox" id="value4" class="tickboxes"><label for="value4" class="tickbox-text"> Special characters</label><br/>
             <div id="character-alert-div"><span id="character-alert">Select at least one character type.</span></div>
           </form>
         </div>
