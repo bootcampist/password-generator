@@ -5,6 +5,7 @@
 
 The Password Generator uses JavaScript to generate a random password based on the user’s input criteria. The user is able to specify the length and character types for the password and the input is stored in an object. The generator also features a character check to ensure the generated password contains the character types the user selected. HTML, CSS and Photoshop were used to add styling to the Password Generator. 
 [A screenshot of the website](./assets/images/screenshot.png)
+![screenshot](https://github.com/bootcampist/password-generator/assets/152117886/64b7a27d-8c1c-499e-bf87-a5c3bfb020e1)
 
 ## Installation
 
