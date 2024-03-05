@@ -1,3 +1,4 @@
+/* General Styling */
 *,
 *::before,
 *::after {
@@ -27,6 +28,7 @@ body {
   padding-right: 20px;
 }
 
+/* Styling for the Title */
 header {
   text-align: center;
   padding: 20px;
@@ -34,14 +36,15 @@ header {
   color: rgba(255, 255, 255, 0.6);
 }
 
-#thin{
+#thin {
   font-weight:400;
 }
+
 #bold{
   font-weight: 600;
 }
 
-
+/* Styling for the Card */
 .card {
   background-color: transparent;
   border-radius: 5px;
@@ -58,9 +61,11 @@ header {
   display: none;
 }
 
+/* Styling for the Form */
 #form-number-label, #form-checkbox-label{
   margin-bottom: 1px;
 }
+
 #form-number {
   width: 50%;
   height: 40px;
@@ -91,6 +96,7 @@ header {
   font-size: 1rem;
 }
 
+/* Styling for the Error Message */
 #number-alert, #character-alert {
   color: red;
   backdrop-filter: blur(20px);
@@ -101,6 +107,7 @@ header {
   background-color: rgba(255,255,255, 0.7);
 }
 
+/* Styling for the Generated Password Section */
 .card-header::after {
   content: " ";
   display: block;
@@ -132,12 +139,12 @@ header {
   clear: both;
 }
 
+/* Styling for the Button */
 .btn {
   border: 1px solid hsl(360, 91%, 36%);;
   background-color: hsl(360, 91%, 36%);
   border-radius: 25px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
-    0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px 0px;
   color: hsl(0, 0%, 100%);
   display: inline-block;
   font-size: 22px;
@@ -163,6 +170,7 @@ button[disabled] {
   float: right;
 }
 
+/* Styling for the Generated Password */
 #password {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -187,11 +195,13 @@ button[disabled] {
   color: white;
 }
 
+/* Styling for Smaller Devices */
 @media (max-width: 690px) {
   body {
     background-size: auto;
     background-position: center;
   }
+
   .btn {
     font-size: 1rem;
     margin: 16px 0px 0px 0px;
